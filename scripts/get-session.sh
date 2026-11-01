@@ -5,7 +5,7 @@
 # session_id 획득 우선순위:
 #   1) CLI 인자 ($1)
 #   2) hook stdin JSON의 .session_id (stdin이 tty가 아닌 경우)
-#   3) CLAUDE_SESSION_ID 환경변수 (deprecation, 2026-05-01까지 유효)
+#   3) hooks/lib/session-id.sh 폴백 — CLAUDE_CODE_SESSION_ID (구 CLAUDE_SESSION_ID 폴백은 제거됨)
 #
 # Anthropic 공식 API는 hook stdin JSON의 .session_id 필드이며,
 # CLAUDE_SESSION_ID 환경변수는 공식 기능이 아님 (GitHub issues
@@ -28,7 +28,7 @@ if [ -z "$SESSION_ID" ]; then
 fi
 
 if [ -z "$SESSION_ID" ]; then
-  echo "Error: session_id 획득 실패 (CLI 인자·stdin JSON·CLAUDE_SESSION_ID 모두 비어있음)" >&2
+  echo "Error: session_id 획득 실패 (CLI 인자·stdin JSON·CLAUDE_CODE_SESSION_ID 모두 비어있음)" >&2
   exit 1
 fi
 

@@ -22,7 +22,7 @@ Generate a reflective summary of the current session, suitable for future refere
 ## Running the Script
 
 ```bash
-# Current session (uses CLAUDE_SESSION_ID env var)
+# Current session (hook stdin .session_id, else CLAUDE_CODE_SESSION_ID — via hooks/lib/session-id.sh)
 ~/.claude/skills/session-retrospective/scripts/get-session.sh
 
 # Specific session
